@@ -1,0 +1,138 @@
+#highlightedText {
+  margin: 10px
+}
+
+#discussionContext{
+  font-size: x-small;
+  margin-bottom: 18px;
+  margin-top: 18px;
+  display:block;
+  max-height: 120px ;
+  max-height:80vw;
+  overflow-y:auto;
+}
+#loading {
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(144, 185, 246, 0.9);
+  /* transparent background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  /* center text horizontally */
+  display: flex;
+  justify-content: center;
+  /* center text vertically */
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+
+  
+  width: 38.5vw;
+  min-height: 20vh; 
+}
+
+#error {
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(246, 144, 144, 0.9);
+  /* transparent background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  /* center text horizontally */
+  display: flex;
+  justify-content: center;
+  /* center text vertically */
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+
+  
+  width: 100vw;
+  min-height: 20vh;
+  color: #fff;
+}
+
+.pill-label {
+  opacity: .6;
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #f0f0f0; 
+  border-radius: 20px; 
+  font-size: 14px;
+  color: #333;
+  cursor: pointer; 
+}
+
+.pill-label.active {
+  opacity: 1;
+  border: 1px solid #0369a1;
+}
+
+.pill-label {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  margin-right: 10px;
+  /* Add some spacing between labels */
+}
+
+.pill-label:hover {
+  opacity: .4;
+}
+
+.pill-label-blue {
+  background-color: #e0f2fe;
+  /* Light blue background */
+  color: #0369a1;
+  /* Dark blue text color */
+  /* border: 1px solid #0369a1; */
+}
+
+.pill-label-green {
+  background-color: #dcfce7;
+  /* Light green background */
+  color: #15803d;
+  /* Dark green text color */
+  /* border: 1px solid #16a34a; */
+  /* Green border */
+}
+
+.pill-label-orange {
+  background-color: #fff7ed;
+  /* Light orange background */
+  color: #b45309;
+  /* Dark orange text color */
+  /* border: 1px solid #b45309; */
+}
+
+
+.blink {
+  animation: 1s ease-in-out 1s infinite reverse both running blink;
+}
+
+@keyframes blink {
+  25% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 0.5;
+  }
+}
