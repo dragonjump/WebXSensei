@@ -13,8 +13,8 @@
 The app has three main features:
 
 1. **Browsing Mentor**: Analyzes your browsing history and provides insights, helpful advice, and a motivational quote.
-2. **Enlighten Mode**: Allows highlghtee text summary, meanng,synonym and urban dictionary.
-3. **Insightful Contribution**: Generates customizable comments/replies for you.
+2. **Enlighten Mode**: Allows you to turn your highlghted text into understanding like summary, meaning, thesaurus, synonym and urban dictionary.
+3. **Insightful Contribution**: Generates customizable comments/replies for you based on your contextual selection.
 
 ## How We Built It
 
@@ -22,7 +22,9 @@ I referred to the documentations and offlne device Gemini Nano GitHub repo ,then
 
 ## Challenges We Ran Into
 
-* **Personal**: Limited time and had to commit code quickly for a hackathon.
+* **Personal**: Limited time and had to commit code quickly for a hackathon. 
+ - Discussions: https://goo.gle/chrome-ai-dev-preview-discuss
+ - Take on the Built-in AI Challenge: https://goo.gle/ChromeAIChallenge
 * **Technical**: API AI sessions canceled themselves when too many were running, and my slow PC processor slowed down when running multiple test codes.
 Code organization is messy.
 

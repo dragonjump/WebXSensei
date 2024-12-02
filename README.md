@@ -24,6 +24,7 @@ Highlight any text on the web to receive instant summaries, definitions, synonym
 
 [![Watch the video](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-enlightment/3.jpg) ](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-enlightment/feature-enlightments.mp4) 
 [![Watch the video](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-enlightment/4.jpg) ](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-enlightment/feature-enlightments.mp4) 
+
 ####  Contribution/Reply/Comments Suggestion:
 Highlight any conversation in your browser to get three auto-suggested replies, which you can fine-tune to match your style.
 
@@ -48,7 +49,7 @@ This sample demonstrates how to use the experimental Gemini Nano API available i
  
 
 ## Installling & Running this extension
-
+1. Setup browser & How-Tos for all our APIs: https://goo.gle/chrome-ai-dev-preview-index
 1. Clone this repository.
 1. Run `npm install` in the project directory.
 1. Run `npm run build` in the project directory to build the extension.
@@ -57,5 +58,4 @@ This sample demonstrates how to use the experimental Gemini Nano API available i
 1. Interact with the Prompt API in the sidebar.
 
 ## Creating your own extension
-
 If you use this sample as the foundation for your own extension, be sure to update the `"trial_tokens"` field [with your own origin trial token](https://developer.chrome.com/docs/web-platform/origin-trials#extensions) and to remove the `"key"` field in `manifest.json`.
