@@ -4,6 +4,7 @@ Introducing Web X Sensei, a revolutionary open soure Chrome extension that trans
 
 #### Browsing Mentor:
 Web X Sensei analyzes your current and past browsing habits to provide personalized advice, helping you navigate the web more efficiently and effectively.
+https://github.com/dragonjump/WebXSensei/blob/gh-pages/videos/feature-browsing/feature-mentor.mp4
 
 #### Enlighten Feature: 
 Highlight any text on the web to receive instant summaries, definitions, synonyms, thesaurus entries, and even modern language insights from sources like Urban Dictionary.
