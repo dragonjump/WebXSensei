@@ -4,19 +4,34 @@ Introducing Web X Sensei, a revolutionary open soure Chrome extension that trans
 
 #### Browsing Mentor:
 Web X Sensei analyzes your current and past browsing habits to provide personalized advice, helping you navigate the web more efficiently and effectively.
-https://github.com/dragonjump/WebXSensei/blob/gh-pages/videos/feature-browsing/feature-mentor.mp4
+
+Right click and your browsing history and acctive tabs data will be analyzed by browser AI
+
 [![Watch the video](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-browsing/1.jpg) ](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-browsing/feature-mentor.mp4) 
 
 [![Watch the video](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-browsing/2.jpg) ](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-browsing/feature-mentor.mp4) 
+
 [![Watch the video](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-browsing/3.jpg) ](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-browsing/feature-mentor.mp4) 
-[![Watch the video](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-browsing/4.jpg) ](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-browsing/feature-mentor.mp4) 
+
 
 #### Enlighten Feature: 
 Highlight any text on the web to receive instant summaries, definitions, synonyms, thesaurus entries, and even modern language insights from sources like Urban Dictionary.
 
+ 
+[![Watch the video](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-enlightment/1.jpg) ](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-enlightment/feature-enlightments.mp4) 
+
+[![Watch the video](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-enlightment/2.jpg) ](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-enlightment/feature-enlightments.mp4) 
+
+[![Watch the video](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-enlightment/3.jpg) ](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-enlightment/feature-enlightments.mp4) 
+[![Watch the video](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-enlightment/4.jpg) ](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-enlightment/feature-enlightments.mp4) 
 ####  Contribution/Reply/Comments Suggestion:
 Highlight any conversation in your browser to get three auto-suggested replies, which you can fine-tune to match your style.
 
+[![Watch the video](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-comment/1.jpg) ](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-comment/feature-comments.mp4) 
+
+[![Watch the video](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-comment/2.jpg) ](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-comment/feature-comments.mp4) 
+
+[![Watch the video](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-comment/3.jpg) ](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-comment/feature-comments.mp4) 
 ###### Key Benefits:
 
 No Sign-Up Required: Enjoy a seamless experience without the need for any sign-ups.
