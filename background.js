@@ -9,7 +9,6 @@ const tabContentList = []
 
 
 //LISTEN TO
-
 function handleHighlightedText(tab, actionMode) {
   const selectedText = window.getSelection().toString();
   if (selectedText) {
@@ -53,14 +52,9 @@ chrome.contextMenus.create({
   contexts: ["selection"],// Show only when text is selected,
 });
 
-// chrome.contextMenus.create({
-//   id: "navigationWisdom",
-//   title: "Summon Navigation & Wisdom ",
-//   contexts: ["selection"],// Show only when text is selected,
-// });
+
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-
 
   if (info.menuItemId === "highlightForEnlightment") {
     chrome.sidePanel.open({ windowId: tab.windowId });
@@ -95,10 +89,6 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
       });
     }, DEFAULT_DELAY);
   }
-
 });
 
-chrome.runtime.onInstalled.addListener(() => {
-
-
-});
+chrome.runtime.onInstalled.addListener(() => { });

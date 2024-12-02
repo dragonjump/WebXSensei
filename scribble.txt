@@ -1,5 +1,4 @@
-you are hackathon juidge and expert . gimme the elevator pitch for my app below. I am joiningin google hackathon . i wanna win. i must show case the use of web ai like gemini nano(offline browser ai api) in my use case. i developed a chrome extension "Web X Sensei" that can do 3 main feature. 1. browsing mentor, teach about my browsing habit history and opened tabs and provide adivce. 2. enlighten feature- highlight any text in the web and get immediate summary,dictionary,synonym,thesaurus, modern gen languange like urban dictionary. 3. contribution suggestion feature- highlight any conversation in the browser, get 3 copy auto suggested reply and ability to tune reply to fit style. my benefit is also 100% nosignup and data is secure as the browser ai is offline and can work without internet.
-
+ 
 
 
 ====
