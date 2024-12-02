@@ -7,46 +7,6 @@ chrome.sidePanel
 const DEFAULT_DELAY = 1200; // use delay intentionally to allow user see transition of navigation
 const tabContentList = []
 
-// listen to active tab
-
-
-
-const LAST_HOURS = 3; // specify the number of hours you want to retrieve
-chrome.tabs.onActivated.addListener(activeInfo => {
-
-  // if (chrome && chrome.history && chrome.history.search) {
-  //   chrome.history.search({
-  //     text: '',
-  //     startTime: Date.now() - LAST_HOURS * 60 * 60 * 1000, // last `n` hours
-  //     endTime: Date.now(),
-  //     maxResults: 100
-  //   }, function (historyItems) {
-
-  //     console.log(historyItems);
-  //     // Get each history item title
-  //     historyItems.forEach(function (item) {
-  //       // chrome.tabs.create({ url: item.url }, tab => {
-  //       //   chrome.scripting.executeScript({
-  //       //     target: { tabId: tab.id },
-  //       //     function: readPageContent
-  //       //   });
-  //       // });
-  //     });
-  //   });
-  // } else {
-  //   console.error("chrome.history.search is not available");
-  // }
-
-
-  // chrome.tabs.get(activeInfo.tabId, tab => {
-  //   chrome.scripting.executeScript({
-  //     target: { tabId: tab.id },
-  //     function: readPageContent,
-  //   });
-  // });
-});
-
-
 
 //LISTEN TO
 
@@ -75,6 +35,11 @@ function handleNavigationWisdom(tab, actionMode) {
 }
 
 
+chrome.contextMenus.create({
+  id: "navigationWisdom2",
+  title: "Web X Sensei - Browsing Mentor",
+  contexts: ["all"],
+});
 
 chrome.contextMenus.create({
   id: "highlightForEnlightment",
@@ -84,21 +49,16 @@ chrome.contextMenus.create({
 
 chrome.contextMenus.create({
   id: "highlightForContribution",
-  title: "Contribution Suggestions  ",
+  title: "Insightful Response",
   contexts: ["selection"],// Show only when text is selected,
 });
 
-chrome.contextMenus.create({
-  id: "navigationWisdom",
-  title: "Summon Navigation & Wisdom ",
-  contexts: ["selection"],// Show only when text is selected,
-});
+// chrome.contextMenus.create({
+//   id: "navigationWisdom",
+//   title: "Summon Navigation & Wisdom ",
+//   contexts: ["selection"],// Show only when text is selected,
+// });
 
-chrome.contextMenus.create({
-  id: "navigationWisdom2",
-  title: "Word Sensei - Browsing Patterns & Wisdom",
-  contexts: ["all"],// Show only when text is selected,
-});
 chrome.contextMenus.onClicked.addListener((info, tab) => {
 
 
@@ -125,7 +85,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     }, DEFAULT_DELAY);
   }
 
-  if (info.menuItemId === 'navigationWisdom' ||info.menuItemId === 'navigationWisdom2') {
+  if (info.menuItemId === 'navigationWisdom' || info.menuItemId === 'navigationWisdom2') {
     chrome.sidePanel.open({ windowId: tab.windowId });
     setTimeout(() => {
       chrome.scripting.executeScript({

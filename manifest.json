@@ -1,8 +1,8 @@
 {
-  "name": "Word Sensei",
+  "name": "Web X Sensei",
   "version": "0.4",
   "manifest_version": 3,
-  "description": ": Word Sensei - Powerful Offline AI-powered tab-pattern advisor, dictionary, thesaurus, synonyms , summary, and ai comment generator at your fingertips.",
+  "description": ": Web X Sensei - Powerful Offline AI-powered browsing advisor, dictionary, thesaurus, synonyms , summary, and ai comment generator at your fingertips.",
   "background": {
     "service_worker": "background.js"
   },
@@ -41,6 +41,6 @@
       "48": "images/icon48.png",
       "128": "images/icon128.png"
     },
-    "default_title": "Word Sensei AI"
+    "default_title": "Web X Sensei AI"
   }
 }
