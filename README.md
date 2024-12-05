@@ -2,10 +2,17 @@
 
 Introducing Web X Sensei, a revolutionary open soure Chrome extension that transforms your browsing experience with the power of Chrome Gemini Nano's offline AI capabilities. Our extension offers three standout features:
 
+Demo
+
+[![Watch the video](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-browsing/3.jpg)](https://www.youtube.com/watch?v=PeWDJS2BqDE)
+
+
 #### Browsing Mentor:
 Web X Sensei analyzes your current and past browsing habits to provide personalized advice, helping you navigate the web more efficiently and effectively.
 
 Right click and your browsing history and acctive tabs data will be analyzed by browser AI
+
+
 
 [![Watch the video](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-browsing/1.jpg) ](https://raw.githubusercontent.com/dragonjump/WebXSensei/main/videos/feature-browsing/feature-mentor.mp4) 
 
