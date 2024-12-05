@@ -1,13 +1,53 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Sensei</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        iframe {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            margin: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Web Sensei</h1>
-    <p>Check out this video:</p>
- <iframe width="560" height="315" src="https://www.youtube.com/embed/PeWDJS2BqDE?si=y9r3_H6aMCCc3Koy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="container">
+        <h1>Welcome to Web Sensei</h1>
+        <p>Check out this video:</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/PeWDJS2BqDE?si=y9r3_H6aMCCc3Koy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
 </body>
 </html>
