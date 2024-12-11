@@ -42,13 +42,13 @@ chrome.contextMenus.create({
 
 chrome.contextMenus.create({
   id: "highlightForEnlightment",
-  title: "Enlighten Me",
+  title: "Web X Sensei - Enlighten Me",
   contexts: ["selection"],// Show only when text is selected,
 });
 
 chrome.contextMenus.create({
   id: "highlightForContribution",
-  title: "Insightful Response",
+  title: "Web X Sensei - Insightful Response",
   contexts: ["selection"],// Show only when text is selected,
 });
 
