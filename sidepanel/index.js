@@ -194,7 +194,7 @@ async function getHistoryViewingTitles() {
 
 /**
  * Initiate event listener to receive message
- */ 
+ */
 chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
 
   reset()
@@ -217,7 +217,7 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
   }
 
 
-  
+
   // When user highlight word and try understand
   if (message.action === 'higlightTextForEnlightment') {
     show(elementEnlighmentBlock)
@@ -226,7 +226,7 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
 
     if (wordList.length > 0) {
       elementHighlightedText.innerHTML = '';
-    elementLogo.src = 'images/th2.jpg'
+      elementLogo.src = 'images/th2.jpg'
 
       // generate the visual-pill element for each word
       wordList.forEach(async (textData, indexNo) => {
