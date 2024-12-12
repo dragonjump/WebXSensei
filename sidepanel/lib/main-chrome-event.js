@@ -38,7 +38,7 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
     show(elementContributionBlock)
 
     elementLogo.src = 'images/th2.jpg'
-    discussionText = '<h5>Discussion</h5>' + message.text;
+    discussionText = '<h5>Discussion Context - Highlighted Texts</h5>' + message.text;
     elementDiscussionContext.innerHTML = discussionText;
     elementDiscussionContext.scrollIntoView();
     // let user see awhile then activate , then auto emulate for user

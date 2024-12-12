@@ -20,6 +20,36 @@ async function initDefaults() {
   elementError.addEventListener('click', () => {
     hide(elementError);
   });
+
+
+
+
+
+  // DICTIONARY 
+  elementEnlighmentMenu.querySelector('span[data-target="dictionary"]').addEventListener('click', async () => {
+    await getHandledResponseTypeForEnglightment(
+      TYPE_OF_RESPONSE_PROMPT.DICTIONARY, selectedWordText)
+  });  
+
+  // THESAURUS
+  elementEnlighmentMenu.querySelector('span[data-target="thesaurus"]').addEventListener('click', async () => {
+    await getHandledResponseTypeForEnglightment(
+      TYPE_OF_RESPONSE_PROMPT.THESAURUS, selectedWordText)
+  });
+
+ 
+
+  // MODERN
+  elementEnlighmentMenu.querySelector('span[data-target="modern"]').addEventListener('click', async () => {
+    await getHandledResponseTypeForEnglightment(
+      TYPE_OF_RESPONSE_PROMPT.MODERN, selectedWordText)
+  });
+ 
+  // SUMMARY
+  elementEnlighmentMenu.querySelector('span[data-target="Summary"]').addEventListener('click', async () => {
+
+    getSummarizeContext(highlightedMessage);
+  }); 
   const defaults = await chrome.aiOriginTrial.languageModel.capabilities();
   // console.log('Model default:', defaults);
   if (defaults.available !== 'readily') {

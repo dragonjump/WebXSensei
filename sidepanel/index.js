@@ -22,6 +22,7 @@ const elementDiscussionContext = document.body.querySelector('#discussionContext
 const elementLoading = document.body.querySelector('#loading');
 const elementContributionBlock = document.body.querySelector('#contributionBlock');
 const elementEnlighmentBlock = document.body.querySelector('#enlighmentBlock');
+const elementEnlighmentMenu = document.body.querySelector('#enlighmentMenu');
 const elementBannerBlock = document.body.querySelector('#bannerBlock');
 const elementVideoBlock = document.body.querySelector('#videoBlock');
 const elementLogoBlock = document.body.querySelector('#logoBlockIcon');
@@ -58,8 +59,7 @@ const TYPE_OF_RESPONSE_PROMPT = {
     PROMPT: `Tell me what is the thesaurus and Synonyms  for  '<textdata>'`,
     ELEMENT: elementResponseThesaurus
   },
-  MODERN: {
-
+  MODERN: { 
     TITLE: 'Modern Slang & Urban',
     PROMPT: `Gimme the urban dictionary or genZ or modern slang equivalent meaning for this word  '<textdata>'.`,
     ELEMENT: elementResponseModern
@@ -70,9 +70,9 @@ const TYPE_OF_RESPONSE_PROMPT = {
 let session;
 let summarizerSession;
 let discussionText;
-
+let selectedWordText=''
 let highlightedMessage = ''
- 
+
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -133,7 +133,7 @@ function resetDisplayResponses() {
 
   hide(elementVideoBlock);
 }
- 
+
 
 
 /**
@@ -160,8 +160,8 @@ function generatePill(wordtext, indexNo) {
 
     // Add active class to the clicked pill element
     pillElement.classList.add('active');
-
-    getAIResponseForText(wordtext)
+    selectedWordText = wordtext
+    getAIResponseForText( )
 
   }
   elementHighlightedText.appendChild(pillElement);
@@ -207,7 +207,7 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
     show(elementContributionBlock)
 
     elementLogo.src = 'images/th2.jpg'
-    discussionText = '<h5>Discussion</h5>' + message.text;
+    discussionText = '<h5>Discussion Context - Highlighted Texts</h5>' + message.text;
     elementDiscussionContext.innerHTML = discussionText;
     elementDiscussionContext.scrollIntoView();
     // let user see awhile then activate , then auto emulate for user
@@ -317,6 +317,36 @@ async function initDefaults() {
   elementError.addEventListener('click', () => {
     hide(elementError);
   });
+
+
+
+
+
+  // DICTIONARY 
+  elementEnlighmentMenu.querySelector('span[data-target="dictionary"]').addEventListener('click', async () => {
+    await getHandledResponseTypeForEnglightment(
+      TYPE_OF_RESPONSE_PROMPT.DICTIONARY, selectedWordText)
+  });  
+
+  // THESAURUS
+  elementEnlighmentMenu.querySelector('span[data-target="thesaurus"]').addEventListener('click', async () => {
+    await getHandledResponseTypeForEnglightment(
+      TYPE_OF_RESPONSE_PROMPT.THESAURUS, selectedWordText)
+  });
+
+ 
+
+  // MODERN
+  elementEnlighmentMenu.querySelector('span[data-target="modern"]').addEventListener('click', async () => {
+    await getHandledResponseTypeForEnglightment(
+      TYPE_OF_RESPONSE_PROMPT.MODERN, selectedWordText)
+  });
+ 
+  // SUMMARY
+  elementEnlighmentMenu.querySelector('span[data-target="Summary"]').addEventListener('click', async () => {
+
+    getSummarizeContext(highlightedMessage);
+  }); 
   const defaults = await chrome.aiOriginTrial.languageModel.capabilities();
   // console.log('Model default:', defaults);
   if (defaults.available !== 'readily') {
@@ -343,6 +373,8 @@ async function getSummarizeContext(textData) {
     const title = '<h2>' + TYPE_OF_RESPONSE_PROMPT.SUMMARY.TITLE + '</h2>'
     elementResponseExplain.innerHTML = title
     summarizerSession = await self.ai.summarizer.create(options);
+    
+    elementResponseExplain.scrollIntoView();
     let streamData = await summarizerSession.summarizeStreaming(textData);
 
     let result = '';
@@ -351,15 +383,18 @@ async function getSummarizeContext(textData) {
       const newChunk = chunk.startsWith(previousChunk)
         ? chunk.slice(previousChunk.length) : chunk;
       result += newChunk;
-      elementResponseExplain.innerHTML = title + result;
+      elementResponseExplain.innerText = title + result;
       previousChunk = chunk;
     }
+    
 
 
     elementResponseExplain.innerHTML = title +
       DOMPurify.sanitize(marked.parse(result));
     summarizerSession.destroy();
   }
+
+
 
   const available = (await self.ai.summarizer.capabilities()).available;
 
@@ -380,38 +415,37 @@ async function getSummarizeContext(textData) {
     await summarizerSession.ready;
   }
 }
- 
+
 /**
  * ✨getAIResponseForText is a function that takes a string of text
  * and gets the AI response for that text.
  * @param {string} textData - the text to get the AI response for
  * @returns {Promise<void>}
  */
-async function getAIResponseForText(textData) {
+async function getAIResponseForText() {
 
   // console.log('getAIResponseForText textData', textData)
 
   hide(TYPE_OF_RESPONSE_PROMPT.DICTIONARY.ELEMENT);
   const res1 = await getHandledResponseTypeForEnglightment(
-    TYPE_OF_RESPONSE_PROMPT.DICTIONARY, textData)
+    TYPE_OF_RESPONSE_PROMPT.DICTIONARY, selectedWordText)
   await sleep(5000); // force sleep reduce processor usage
 
 
-  hide(TYPE_OF_RESPONSE_PROMPT.THESAURUS.ELEMENT);
-  const res2 = await getHandledResponseTypeForEnglightment(
-    TYPE_OF_RESPONSE_PROMPT.THESAURUS, textData)
-  await sleep(5000); // force sleep reduce processor usage
+  // hide(TYPE_OF_RESPONSE_PROMPT.THESAURUS.ELEMENT);
+  // const res2 = await getHandledResponseTypeForEnglightment(
+  //   TYPE_OF_RESPONSE_PROMPT.THESAURUS, textData)
+  // await sleep(5000); // force sleep reduce processor usage
 
 
 
-  hide(TYPE_OF_RESPONSE_PROMPT.MODERN.ELEMENT);
-  const res3 = await getHandledResponseTypeForEnglightment(
-    TYPE_OF_RESPONSE_PROMPT.MODERN, textData)
-  await sleep(4000); // force sleep reduce processor usage
+  // hide(TYPE_OF_RESPONSE_PROMPT.MODERN.ELEMENT);
+  // const res3 = await getHandledResponseTypeForEnglightment(
+  //   TYPE_OF_RESPONSE_PROMPT.MODERN, textData)
+  // await sleep(4000); // force sleep reduce processor usage
 
   // Explain context of highlighted sentences
   getSummarizeContext(highlightedMessage);
-  // reset() 
 
 }
 
@@ -433,10 +467,12 @@ async function getAIResponseForText(textData) {
  *     The response from the language model.
  */
 async function getHandledResponseTypeForEnglightment(typeResponse, textData) {
+  hide(typeResponse.ELEMENT);
+  const commonTitle = '<h2>' + typeResponse.TITLE + '</h2> '
 
+  typeResponse.ELEMENT.innerHTML = commonTitle
   let chunktext = ''
   try {
-    const commonTitle = '<h2>' + typeResponse.TITLE + '</h2>'
     showLoading();
     const params = {
       systemPrompt: DEFAULT_PROMPT,
@@ -453,13 +489,14 @@ async function getHandledResponseTypeForEnglightment(typeResponse, textData) {
       typeResponse.ELEMENT.innerHTML = commonTitle
       for await (const chunk of streamResult) {
         chunktext = (chunk);
-        typeResponse.ELEMENT.innerHTML = chunk;
+        typeResponse.ELEMENT.innerText = chunk;
       }
       typeResponse.ELEMENT.innerHTML = commonTitle +
         DOMPurify.sanitize(marked.parse(chunktext))
 
     } catch (e) {
-      typeResponse.ELEMENT.innerHTML = '[Formatting or Connectivity Issue. Please retry again]' +
+      typeResponse.ELEMENT.innerHTML = commonTitle +
+        '[Formatting or Connectivity Issue. Please press to retry again]' +
         chunktext
       // showError(typeResponse.ELEMENT.innerHTML);
       console.warn(e)
@@ -471,7 +508,7 @@ async function getHandledResponseTypeForEnglightment(typeResponse, textData) {
     }
   } catch (e) {
     console.warn(e);
-    // showError('Generation or Connectivity Issue. Please retry again.');
+    // showError('Generation or Connectivity Issue. Please press to retry again.');
   }
 }
 async function getHandledResponseTypeForContribution(textData) {
@@ -497,6 +534,7 @@ async function getHandledResponseTypeForContribution(textData) {
       temperature: DEFAULT_TEMPERATURE,
       topK: DEFAULT_TOP_K
     };
+    elementResponseContribution.scrollIntoView();
     const prompt = `${userPromptStyle}<discussion>${textData}</discussion>`
     const streamResult = await runPrompt(prompt, params);
     // Handle response
@@ -504,12 +542,12 @@ async function getHandledResponseTypeForContribution(textData) {
     let chunktext = ''
     try {
       show(elementResponseContribution);
-      elementResponseContribution.scrollIntoView();
 
+      elementResponseContribution.scrollIntoView();
       elementResponseContribution.innerHTML = headerTitle
       for await (const chunk of streamResult) {
         chunktext = (chunk);
-        elementResponseContribution.innerHTML = chunk
+        elementResponseContribution.innerText = chunk
 
       }
       elementResponseContribution.innerHTML = headerTitle +
@@ -519,7 +557,7 @@ async function getHandledResponseTypeForContribution(textData) {
     } catch (e) {
       // Handle failed response
       console.warn(e);
-      elementResponseContribution.innerHTML = '[Formatting or Connectivity Issue. Please retry again]' +
+      elementResponseContribution.innerHTML = headerTitle + '[Formatting or Connectivity Issue. Please press to retry again]' +
         chunktext
       // showError(elementResponseContribution.innerHTML);
       console.warn(elementResponseContribution.innerHTML);
@@ -540,12 +578,11 @@ async function getHandledResponseTypeForContribution(textData) {
     }
   } catch (e) {
     console.warn(e);
-    // showError('Generation or Connectivity Issue. Please retry again.');
+    // showError('Generation or Connectivity Issue. Please press to retry again.');
   }
 }
 
 async function getHandledResponseTypeForWisdom(textData, historyListText) {
-
 
 
   const headerTitle = '<h2>What I know about you</h2>'
@@ -585,7 +622,7 @@ async function getHandledResponseTypeForWisdom(textData, historyListText) {
       elementObservationBrowsingView.innerHTML = headerTitle
       for await (const chunk of streamResult) {
         chunktext = (chunk);
-        elementObservationBrowsingView.innerHTML = chunk
+        elementObservationBrowsingView.innerText = chunk
 
       }
       elementObservationBrowsingView.innerHTML = headerTitle +
@@ -596,7 +633,7 @@ async function getHandledResponseTypeForWisdom(textData, historyListText) {
       // Handle failed response
       console.warn(e);
 
-      elementObservationBrowsingView.innerHTML = '[Formatting or Connectivity Issue. Please retry again]' +
+      elementObservationBrowsingView.innerHTML = headerTitle + '[Formatting or Connectivity Issue. Please press to retry again]' +
         chunktext
       // showError(elementObservationBrowsingView.innerHTML);
     }
@@ -606,7 +643,7 @@ async function getHandledResponseTypeForWisdom(textData, historyListText) {
     }
   } catch (e) {
     console.warn(e);
-    // showError('Generation or Connectivity Issue. Please retry again.');
+    // showError('Generation or Connectivity Issue. Please press to retry again.');
   }
 }
 async function runPrompt(prompt, params) {

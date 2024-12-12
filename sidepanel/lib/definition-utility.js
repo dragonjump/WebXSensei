@@ -1,4 +1,4 @@
- 
+
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -59,7 +59,7 @@ function resetDisplayResponses() {
 
   hide(elementVideoBlock);
 }
- 
+
 
 
 /**
@@ -86,8 +86,8 @@ function generatePill(wordtext, indexNo) {
 
     // Add active class to the clicked pill element
     pillElement.classList.add('active');
-
-    getAIResponseForText(wordtext)
+    selectedWordText = wordtext
+    getAIResponseForText( )
 
   }
   elementHighlightedText.appendChild(pillElement);

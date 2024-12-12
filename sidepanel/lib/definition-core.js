@@ -16,6 +16,7 @@ const elementDiscussionContext = document.body.querySelector('#discussionContext
 const elementLoading = document.body.querySelector('#loading');
 const elementContributionBlock = document.body.querySelector('#contributionBlock');
 const elementEnlighmentBlock = document.body.querySelector('#enlighmentBlock');
+const elementEnlighmentMenu = document.body.querySelector('#enlighmentMenu');
 const elementBannerBlock = document.body.querySelector('#bannerBlock');
 const elementVideoBlock = document.body.querySelector('#videoBlock');
 const elementLogoBlock = document.body.querySelector('#logoBlockIcon');
@@ -52,8 +53,7 @@ const TYPE_OF_RESPONSE_PROMPT = {
     PROMPT: `Tell me what is the thesaurus and Synonyms  for  '<textdata>'`,
     ELEMENT: elementResponseThesaurus
   },
-  MODERN: {
-
+  MODERN: { 
     TITLE: 'Modern Slang & Urban',
     PROMPT: `Gimme the urban dictionary or genZ or modern slang equivalent meaning for this word  '<textdata>'.`,
     ELEMENT: elementResponseModern
@@ -64,5 +64,5 @@ const TYPE_OF_RESPONSE_PROMPT = {
 let session;
 let summarizerSession;
 let discussionText;
-
+let selectedWordText=''
 let highlightedMessage = ''

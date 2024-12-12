@@ -2,6 +2,47 @@
   margin: 10px
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+#enlighmentMenu {
+
+  font-size: xx-small;
+  padding: 3px;
+  text-align: center;
+  line-height: 3.8;
+  text-underline-offset: 3px;
+ }
+#enlighmentMenu span:hover{
+ opacity: .7;
+}
+#enlighmentMenu span{
+  padding:3px;
+  padding: 5px;
+  font-size: x-small;
+  font-size: xx-small;
+  font-style: italic;
+  text-decoration: underline;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+}
 #discussionContext{
   font-size: x-small;
   margin-bottom: 18px;
@@ -10,6 +51,18 @@
   max-height: 120px ;
   max-height:80vw;
   overflow-y:auto;
+  
+  background: rgba(0, 0, 255, .05);
+  padding: 11px;
+  PADDING-BOTTOM: 20PX;
+  display: block;
+  MIN-HEIGHT: 10VH;
+  BORDER: SOLID;
+  MAX-HEIGHT: 20VH;
+  FONT-SIZE: X-SMALL;
+  OVERFLOW-Y: AUTO;
+  BORDER-RADIUS: 20PX;
+ 
 }
 #loading {
 
@@ -37,6 +90,7 @@
 }
 
 .subtitle{ 
+  display: none;
   font-family: monospace;
   font-weight: 400;
   FONT-SIZE: xx-small;
@@ -67,9 +121,7 @@
   height: 40px;
   text-align: center;
 }
-#videoBlock{
-
-}
+ 
 #videoBlock .text{
   text-align: left;
 }
