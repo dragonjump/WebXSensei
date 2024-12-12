@@ -37,18 +37,21 @@ function handleNavigationWisdom(tab, actionMode) {
 chrome.contextMenus.create({
   id: "navigationWisdom2",
   title: "Web X Sensei - Browsing Mentor",
+  documentUrlPatterns: ['file://*','https://*/*','http://*/*'],
   contexts: ["all"],
 });
 
 chrome.contextMenus.create({
   id: "highlightForEnlightment",
-  title: "Web X Sensei - Enlighten Me",
+  title: "Web X Sensei - Enlighten Me", 
+  documentUrlPatterns: ['file://*','https://*/*','http://*/*'],
   contexts: ["selection"],// Show only when text is selected,
 });
 
 chrome.contextMenus.create({
   id: "highlightForContribution",
   title: "Web X Sensei - Insightful Response",
+  documentUrlPatterns: ['file://*','https://*/*','http://*/*'],
   contexts: ["selection"],// Show only when text is selected,
 });
 

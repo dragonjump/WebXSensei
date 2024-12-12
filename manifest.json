@@ -1,8 +1,8 @@
 {
   "name": "Web X Sensei",
-  "version": "0.5",
+  "version": "0.6",
   "manifest_version": 3,
-  "description": ": Web X Sensei - Powerful Offline AI-powered browsing advisor, dictionary, thesaurus, synonyms , summary, and ai comment generator at your fingertips.",
+  "description": ": Web X Sensei - Powerful Offline AI-powered browsing advisor, explainer, rewriter & comment generator at your fingertips.",
   "background": {
     "service_worker": "background.js"
   },
