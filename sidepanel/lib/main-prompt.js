@@ -209,7 +209,8 @@ async function getHandledResponseTypeForContribution(textData) {
           p.classList.add(PILL_CLASS_NAMES[indexNo % PILL_CLASS_NAMES.length])
 
           p.addEventListener('click', () => {
-            copyToClipboard(p.innerText)
+            const cleanedText = text.replace(/^Option \d+ : /, "");
+            copyToClipboard(cleanedText);
           });
         });
       }

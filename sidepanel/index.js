@@ -107,10 +107,18 @@ function showError(error) {
 
 function show(element) {
   element.removeAttribute('hidden');
+
+  // auto close error modeal
+  if (element.id === 'error') {
+    setTimeout(() => {
+      hide(element)
+    }, 3200)
+  }
 }
 
 function hide(element) {
   element.setAttribute('hidden', '');
+
 }
 
 
@@ -161,7 +169,7 @@ function generatePill(wordtext, indexNo) {
     // Add active class to the clicked pill element
     pillElement.classList.add('active');
     selectedWordText = wordtext
-    getAIResponseForText( )
+    getAIResponseForText()
 
   }
   elementHighlightedText.appendChild(pillElement);
@@ -321,7 +329,9 @@ async function initDefaults() {
 
 
 
-
+  inputPrompt.addEventListener('click', () => {
+   inputPrompt.classList.toggle('inactive');
+  });
   // DICTIONARY 
   elementEnlighmentMenu.querySelector('span[data-target="dictionary"]').addEventListener('click', async () => {
     await getHandledResponseTypeForEnglightment(
@@ -571,7 +581,8 @@ async function getHandledResponseTypeForContribution(textData) {
           p.classList.add(PILL_CLASS_NAMES[indexNo % PILL_CLASS_NAMES.length])
 
           p.addEventListener('click', () => {
-            copyToClipboard(p.innerText)
+            const cleanedText = text.replace(/^Option \d+ : /, "");
+            copyToClipboard(cleanedText);
           });
         });
       }

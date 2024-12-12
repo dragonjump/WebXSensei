@@ -24,7 +24,9 @@ async function initDefaults() {
 
 
 
-
+  inputPrompt.addEventListener('click', () => {
+   inputPrompt.classList.toggle('inactive');
+  });
   // DICTIONARY 
   elementEnlighmentMenu.querySelector('span[data-target="dictionary"]').addEventListener('click', async () => {
     await getHandledResponseTypeForEnglightment(

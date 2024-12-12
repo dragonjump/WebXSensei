@@ -226,3 +226,9 @@
     opacity: 0.5;
   }
 }
+
+textarea.inactive{ 
+  height: 0px;
+  padding: 3px;
+  font-size: small;
+}
