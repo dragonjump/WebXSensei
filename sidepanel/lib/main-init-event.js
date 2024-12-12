@@ -23,13 +23,17 @@ async function initDefaults() {
 
 
 
-
-
+  inputPrompt.addEventListener('blur', () => {
+    inputPrompt.classList.add('inactive');
+  });
+  inputPrompt.addEventListener('focus', () => {
+    inputPrompt.classList.remove('inactive');
+  });
   // DICTIONARY 
   elementEnlighmentMenu.querySelector('span[data-target="dictionary"]').addEventListener('click', async () => {
     await getHandledResponseTypeForEnglightment(
       TYPE_OF_RESPONSE_PROMPT.DICTIONARY, selectedWordText)
-  });  
+  });
 
   // THESAURUS
   elementEnlighmentMenu.querySelector('span[data-target="thesaurus"]').addEventListener('click', async () => {
@@ -37,19 +41,19 @@ async function initDefaults() {
       TYPE_OF_RESPONSE_PROMPT.THESAURUS, selectedWordText)
   });
 
- 
+
 
   // MODERN
   elementEnlighmentMenu.querySelector('span[data-target="modern"]').addEventListener('click', async () => {
     await getHandledResponseTypeForEnglightment(
       TYPE_OF_RESPONSE_PROMPT.MODERN, selectedWordText)
   });
- 
+
   // SUMMARY
-  elementEnlighmentMenu.querySelector('span[data-target="Summary"]').addEventListener('click', async () => {
+  elementEnlighmentMenu.querySelector('span[data-target="summary"]').addEventListener('click', async () => {
 
     getSummarizeContext(highlightedMessage);
-  }); 
+  });
   const defaults = await chrome.aiOriginTrial.languageModel.capabilities();
   // console.log('Model default:', defaults);
   if (defaults.available !== 'readily') {

@@ -33,10 +33,18 @@ function showError(error) {
 
 function show(element) {
   element.removeAttribute('hidden');
+
+  // auto close error modeal
+  if (element.id === 'error') {
+    setTimeout(() => {
+      hide(element)
+    }, 3200)
+  }
 }
 
 function hide(element) {
   element.setAttribute('hidden', '');
+
 }
 
 
@@ -87,7 +95,7 @@ function generatePill(wordtext, indexNo) {
     // Add active class to the clicked pill element
     pillElement.classList.add('active');
     selectedWordText = wordtext
-    getAIResponseForText( )
+    getAIResponseForText()
 
   }
   elementHighlightedText.appendChild(pillElement);

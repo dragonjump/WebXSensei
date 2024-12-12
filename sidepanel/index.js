@@ -107,10 +107,18 @@ function showError(error) {
 
 function show(element) {
   element.removeAttribute('hidden');
+
+  // auto close error modeal
+  if (element.id === 'error') {
+    setTimeout(() => {
+      hide(element)
+    }, 3200)
+  }
 }
 
 function hide(element) {
   element.setAttribute('hidden', '');
+
 }
 
 
@@ -161,7 +169,7 @@ function generatePill(wordtext, indexNo) {
     // Add active class to the clicked pill element
     pillElement.classList.add('active');
     selectedWordText = wordtext
-    getAIResponseForText( )
+    getAIResponseForText()
 
   }
   elementHighlightedText.appendChild(pillElement);
@@ -320,13 +328,17 @@ async function initDefaults() {
 
 
 
-
-
+  inputPrompt.addEventListener('blur', () => {
+    inputPrompt.classList.add('inactive');
+  });
+  inputPrompt.addEventListener('focus', () => {
+    inputPrompt.classList.remove('inactive');
+  });
   // DICTIONARY 
   elementEnlighmentMenu.querySelector('span[data-target="dictionary"]').addEventListener('click', async () => {
     await getHandledResponseTypeForEnglightment(
       TYPE_OF_RESPONSE_PROMPT.DICTIONARY, selectedWordText)
-  });  
+  });
 
   // THESAURUS
   elementEnlighmentMenu.querySelector('span[data-target="thesaurus"]').addEventListener('click', async () => {
@@ -334,19 +346,19 @@ async function initDefaults() {
       TYPE_OF_RESPONSE_PROMPT.THESAURUS, selectedWordText)
   });
 
- 
+
 
   // MODERN
   elementEnlighmentMenu.querySelector('span[data-target="modern"]').addEventListener('click', async () => {
     await getHandledResponseTypeForEnglightment(
       TYPE_OF_RESPONSE_PROMPT.MODERN, selectedWordText)
   });
- 
+
   // SUMMARY
-  elementEnlighmentMenu.querySelector('span[data-target="Summary"]').addEventListener('click', async () => {
+  elementEnlighmentMenu.querySelector('span[data-target="summary"]').addEventListener('click', async () => {
 
     getSummarizeContext(highlightedMessage);
-  }); 
+  });
   const defaults = await chrome.aiOriginTrial.languageModel.capabilities();
   // console.log('Model default:', defaults);
   if (defaults.available !== 'readily') {
@@ -373,7 +385,7 @@ async function getSummarizeContext(textData) {
     const title = '<h2>' + TYPE_OF_RESPONSE_PROMPT.SUMMARY.TITLE + '</h2>'
     elementResponseExplain.innerHTML = title
     summarizerSession = await self.ai.summarizer.create(options);
-    
+
     elementResponseExplain.scrollIntoView();
     let streamData = await summarizerSession.summarizeStreaming(textData);
 
@@ -386,7 +398,7 @@ async function getSummarizeContext(textData) {
       elementResponseExplain.innerText = title + result;
       previousChunk = chunk;
     }
-    
+
 
 
     elementResponseExplain.innerHTML = title +
@@ -571,7 +583,11 @@ async function getHandledResponseTypeForContribution(textData) {
           p.classList.add(PILL_CLASS_NAMES[indexNo % PILL_CLASS_NAMES.length])
 
           p.addEventListener('click', () => {
-            copyToClipboard(p.innerText)
+            const text = p.innerText;
+            const parts = text.split(":");
+            const afterColonText = parts.slice(1).join(":").trim();
+
+            copyToClipboard(afterColonText);
           });
         });
       }

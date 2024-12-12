@@ -11,7 +11,7 @@ async function getSummarizeContext(textData) {
     const title = '<h2>' + TYPE_OF_RESPONSE_PROMPT.SUMMARY.TITLE + '</h2>'
     elementResponseExplain.innerHTML = title
     summarizerSession = await self.ai.summarizer.create(options);
-    
+
     elementResponseExplain.scrollIntoView();
     let streamData = await summarizerSession.summarizeStreaming(textData);
 
@@ -24,7 +24,7 @@ async function getSummarizeContext(textData) {
       elementResponseExplain.innerText = title + result;
       previousChunk = chunk;
     }
-    
+
 
 
     elementResponseExplain.innerHTML = title +
@@ -209,7 +209,11 @@ async function getHandledResponseTypeForContribution(textData) {
           p.classList.add(PILL_CLASS_NAMES[indexNo % PILL_CLASS_NAMES.length])
 
           p.addEventListener('click', () => {
-            copyToClipboard(p.innerText)
+            const text = p.innerText;
+            const parts = text.split(":");
+            const afterColonText = parts.slice(1).join(":").trim();
+
+            copyToClipboard(afterColonText);
           });
         });
       }
