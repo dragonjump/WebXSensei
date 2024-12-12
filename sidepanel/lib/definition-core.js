@@ -35,13 +35,15 @@ const elementResponseThesaurus = document.body.querySelector('#responseThesaurus
 const elementResponseModern = document.body.querySelector('#responseModern');
 const elementLogo = document.body.querySelector('#logoBlock');
 
+
+const COMMON_PROMPT_ERROR_MESSAGE= '[Formatting or Connectivity Issue. Please press to retry again]'
 const DEFAULT_TEMPERATURE = 0.33;
 const DEFAULT_TOP_K = 3;
 const PILL_CLASS_NAMES = ['pill-label-blue', 'pill-label-orange', 'pill-label-green',]
 
 const TYPE_OF_RESPONSE_PROMPT = {
   SUMMARY: {
-    TITLE: 'Possible Explaination '
+    TITLE: 'Possible Explaination Summarized'
   },
   DICTIONARY: {
     TITLE: 'Dictionary',

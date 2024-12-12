@@ -41,13 +41,15 @@ const elementResponseThesaurus = document.body.querySelector('#responseThesaurus
 const elementResponseModern = document.body.querySelector('#responseModern');
 const elementLogo = document.body.querySelector('#logoBlock');
 
+
+const COMMON_PROMPT_ERROR_MESSAGE= '[Formatting or Connectivity Issue. Please press to retry again]'
 const DEFAULT_TEMPERATURE = 0.33;
 const DEFAULT_TOP_K = 3;
 const PILL_CLASS_NAMES = ['pill-label-blue', 'pill-label-orange', 'pill-label-green',]
 
 const TYPE_OF_RESPONSE_PROMPT = {
   SUMMARY: {
-    TITLE: 'Possible Explaination '
+    TITLE: 'Possible Explaination Summarized'
   },
   DICTIONARY: {
     TITLE: 'Dictionary',
@@ -142,6 +144,17 @@ function resetDisplayResponses() {
   hide(elementVideoBlock);
 }
 
+function resetResponses() {
+  elementResponseDictionary.innerHTML =''
+  elementResponseThesaurus.innerHTML =''
+  elementResponseModern.innerHTML =''
+  elementResponseExplain.innerHTML =''
+
+  
+  elementResponseContribution.innerHTML ='' 
+  elementObservationBrowsingView.innerHTML =''
+}
+
 
 
 /**
@@ -207,9 +220,9 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
 
   reset()
   sleep(1000) // give gpu some time to destroy
-
   highlightedMessage = message.text
   resetDisplayResponses()
+  resetResponses()
   // When user highlight word and generate comment
   if (message.action === 'higlightTextForContribution') {
     show(elementContributionBlock)
@@ -436,28 +449,9 @@ async function getSummarizeContext(textData) {
  */
 async function getAIResponseForText() {
 
-  // console.log('getAIResponseForText textData', textData)
-
-  hide(TYPE_OF_RESPONSE_PROMPT.DICTIONARY.ELEMENT);
-  const res1 = await getHandledResponseTypeForEnglightment(
+  await getHandledResponseTypeForEnglightment(
     TYPE_OF_RESPONSE_PROMPT.DICTIONARY, selectedWordText)
-  await sleep(5000); // force sleep reduce processor usage
 
-
-  // hide(TYPE_OF_RESPONSE_PROMPT.THESAURUS.ELEMENT);
-  // const res2 = await getHandledResponseTypeForEnglightment(
-  //   TYPE_OF_RESPONSE_PROMPT.THESAURUS, textData)
-  // await sleep(5000); // force sleep reduce processor usage
-
-
-
-  // hide(TYPE_OF_RESPONSE_PROMPT.MODERN.ELEMENT);
-  // const res3 = await getHandledResponseTypeForEnglightment(
-  //   TYPE_OF_RESPONSE_PROMPT.MODERN, textData)
-  // await sleep(4000); // force sleep reduce processor usage
-
-  // Explain context of highlighted sentences
-  getSummarizeContext(highlightedMessage);
 
 }
 
@@ -485,7 +479,7 @@ async function getHandledResponseTypeForEnglightment(typeResponse, textData) {
   typeResponse.ELEMENT.innerHTML = commonTitle
   let chunktext = ''
   try {
-    showLoading();
+    show(elementLoading);
     const params = {
       systemPrompt: DEFAULT_PROMPT,
       temperature: DEFAULT_TEMPERATURE,
@@ -508,7 +502,7 @@ async function getHandledResponseTypeForEnglightment(typeResponse, textData) {
 
     } catch (e) {
       typeResponse.ELEMENT.innerHTML = commonTitle +
-        '[Formatting or Connectivity Issue. Please press to retry again]' +
+        COMMON_PROMPT_ERROR_MESSAGE +
         chunktext
       // showError(typeResponse.ELEMENT.innerHTML);
       console.warn(e)
@@ -569,7 +563,7 @@ async function getHandledResponseTypeForContribution(textData) {
     } catch (e) {
       // Handle failed response
       console.warn(e);
-      elementResponseContribution.innerHTML = headerTitle + '[Formatting or Connectivity Issue. Please press to retry again]' +
+      elementResponseContribution.innerHTML = headerTitle + COMMON_PROMPT_ERROR_MESSAGE +
         chunktext
       // showError(elementResponseContribution.innerHTML);
       console.warn(elementResponseContribution.innerHTML);
@@ -649,7 +643,7 @@ async function getHandledResponseTypeForWisdom(textData, historyListText) {
       // Handle failed response
       console.warn(e);
 
-      elementObservationBrowsingView.innerHTML = headerTitle + '[Formatting or Connectivity Issue. Please press to retry again]' +
+      elementObservationBrowsingView.innerHTML = headerTitle + COMMON_PROMPT_ERROR_MESSAGE +
         chunktext
       // showError(elementObservationBrowsingView.innerHTML);
     }

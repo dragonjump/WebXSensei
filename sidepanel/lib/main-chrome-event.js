@@ -30,9 +30,9 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
 
   reset()
   sleep(1000) // give gpu some time to destroy
-
   highlightedMessage = message.text
   resetDisplayResponses()
+  resetResponses()
   // When user highlight word and generate comment
   if (message.action === 'higlightTextForContribution') {
     show(elementContributionBlock)

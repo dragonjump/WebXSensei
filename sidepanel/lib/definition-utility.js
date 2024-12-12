@@ -68,6 +68,17 @@ function resetDisplayResponses() {
   hide(elementVideoBlock);
 }
 
+function resetResponses() {
+  elementResponseDictionary.innerHTML =''
+  elementResponseThesaurus.innerHTML =''
+  elementResponseModern.innerHTML =''
+  elementResponseExplain.innerHTML =''
+
+  
+  elementResponseContribution.innerHTML ='' 
+  elementObservationBrowsingView.innerHTML =''
+}
+
 
 
 /**
