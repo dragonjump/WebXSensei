@@ -19,6 +19,17 @@ function copyToClipboard(text) {
     });
 }
 
+function doScroll(element) {
+  if(!element)return;
+
+  element.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center',
+    inline: 'nearest'
+  });
+  window.scrollBy(0, 120)
+
+}
 function showLoading() {
   hide(elementError);
   show(elementLoading);
@@ -69,14 +80,14 @@ function resetDisplayResponses() {
 }
 
 function resetResponses() {
-  elementResponseDictionary.innerHTML =''
-  elementResponseThesaurus.innerHTML =''
-  elementResponseModern.innerHTML =''
-  elementResponseExplain.innerHTML =''
+  elementResponseDictionary.innerHTML = ''
+  elementResponseThesaurus.innerHTML = ''
+  elementResponseModern.innerHTML = ''
+  elementResponseExplain.innerHTML = ''
 
-  
-  elementResponseContribution.innerHTML ='' 
-  elementObservationBrowsingView.innerHTML =''
+
+  elementResponseContribution.innerHTML = ''
+  elementObservationBrowsingView.innerHTML = ''
 }
 
 

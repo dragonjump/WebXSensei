@@ -39,8 +39,8 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
 
     elementLogo.src = 'images/th2.jpg'
     discussionText = '<h5>Discussion Context - Highlighted Texts</h5>' + message.text;
-    elementDiscussionContext.innerHTML = discussionText;
-    elementDiscussionContext.scrollIntoView();
+    elementDiscussionContext.innerHTML = discussionText; 
+    doScroll(elementDiscussionContext) 
     // let user see awhile then activate , then auto emulate for user
     setTimeout(() => {
       buttonPrompt.click()

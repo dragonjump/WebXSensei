@@ -12,7 +12,7 @@ async function getSummarizeContext(textData) {
     elementResponseExplain.innerHTML = title
     summarizerSession = await self.ai.summarizer.create(options);
 
-    elementResponseExplain.scrollIntoView();
+    doScroll(elementResponseExplain)
     let streamData = await summarizerSession.summarizeStreaming(textData);
 
     let result = '';
@@ -103,7 +103,7 @@ async function getHandledResponseTypeForEnglightment(typeResponse, textData) {
     const streamResult = await runPrompt(prompt, params);
 
     show(typeResponse.ELEMENT);
-    typeResponse.ELEMENT.scrollIntoView();
+    doScroll(typeResponse.ELEMENT)
     try {
       typeResponse.ELEMENT.innerHTML = commonTitle
       for await (const chunk of streamResult) {
@@ -153,7 +153,8 @@ async function getHandledResponseTypeForContribution(textData) {
       temperature: DEFAULT_TEMPERATURE,
       topK: DEFAULT_TOP_K
     };
-    elementResponseContribution.scrollIntoView();
+
+    doScroll(elementResponseContribution)
     const prompt = `${userPromptStyle}<discussion>${textData}</discussion>`
     const streamResult = await runPrompt(prompt, params);
     // Handle response
@@ -161,8 +162,7 @@ async function getHandledResponseTypeForContribution(textData) {
     let chunktext = ''
     try {
       show(elementResponseContribution);
-
-      elementResponseContribution.scrollIntoView();
+      doScroll(elementResponseContribution)
       elementResponseContribution.innerHTML = headerTitle
       for await (const chunk of streamResult) {
         chunktext = (chunk);
@@ -240,8 +240,7 @@ async function getHandledResponseTypeForWisdom(textData, historyListText) {
     // Handle response
     try {
       show(elementObservationBrowsingView);
-      elementObservationBrowsingView.scrollIntoView();
-
+      doScroll(elementObservationBrowsingView);
       elementObservationBrowsingView.innerHTML = headerTitle
       for await (const chunk of streamResult) {
         chunktext = (chunk);
